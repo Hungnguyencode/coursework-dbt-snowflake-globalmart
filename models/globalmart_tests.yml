@@ -1,0 +1,40 @@
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging customer data"
+    columns:
+      - name: CUSTOMERID
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_orders
+    description: "Staging order data"
+    columns:
+      - name: ORDERID
+        data_tests:
+          - not_null
+
+  - name: dim_products
+    description: "Product dimension"
+    columns:
+      - name: PRODUCTID
+        data_tests:
+          - not_null
+          - unique
+
+  - name: fct_orders
+    description: "Order fact data"
+    columns:
+      - name: ORDERID
+        data_tests:
+          - not_null
+
+  - name: mart_globalmart
+    description: "GlobalMart analytics mart"
+    columns:
+      - name: ORDERID
+        data_tests:
+          - not_null

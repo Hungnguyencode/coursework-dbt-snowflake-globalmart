@@ -1,0 +1,14 @@
+
+{{ config(materialized='view') }}
+
+SELECT
+    ORDERID,
+    ORDERDATE,
+    SHIPDATE,
+    SHIPMODE,
+    CUSTOMERID,
+    PRODUCTID,
+    ORDERCOSTPRICE,
+    ORDERSELLINGPRICE,
+    ORDERSELLINGPRICE - ORDERCOSTPRICE AS ORDERPROFIT
+FROM {{ ref('stg_orders') }}
