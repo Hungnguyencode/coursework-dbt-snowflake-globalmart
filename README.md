@@ -293,6 +293,31 @@ Các kết quả chính:
 
 Dự án minh họa quy trình xây dựng một hệ thống phân tích dữ liệu có cấu trúc, có kiểm thử và có khả năng mở rộng.
 
+
+
+## 13. Sơ đồ kiến trúc ELT
+
+```mermaid
+flowchart TD
+    A["CSV: Customers, Products, Orders"]
+    B["Snowflake Stage: UPLOAD"]
+    C["RAW.GLOBALMART: 3 Source Tables"]
+    D["dbt Staging: 3 Models"]
+    E["Fact: fct_orders"]
+    F["Dimension: dim_products"]
+    G["Data Mart: mart_globalmart"]
+    H["Data Quality: 7/7 Tests Passed"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    D --> F
+    E --> G
+    F --> G
+    G --> H
+```
+
 ---
 
 **Repository:** coursework-dbt-snowflake-globalmart
